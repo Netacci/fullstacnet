@@ -57,11 +57,23 @@ const Display = ({ counter }) => <div>{counter} </div>;
 
 const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>;
 
+const History = (props) => {
+  if (props.allClicks.length === 0) {
+    return <div>the app is used by pressing the buttons</div>;
+  }
+  return <div>button press history: {props.allClicks.join(' ')}</div>;
+};
+
 const App = () => {
   const [counter, setCounter] = useState(0);
 
   const handleClick = () => setCounter(counter + 1);
-  const setToZero = () => setCounter(0);
+  const setToZero = () => {
+    setCounter(0);
+    setLeft(0);
+    setRight(0);
+    setAll([]);
+  };
   const minusOne = () => setCounter(counter - 1);
 
   const course = {
@@ -81,6 +93,22 @@ const App = () => {
       },
     ],
   };
+  // const [clicks, setClicks] = useState({
+  //   left: 0,
+  //   right: 0,
+  // });
+  const [left, setLeft] = useState(0);
+  const [right, setRight] = useState(0);
+  const [allClicks, setAll] = useState([]);
+
+  const handleLeft = () => {
+    setAll(allClicks.concat('L'));
+    setLeft(left + 1);
+  };
+  const handleRight = () => {
+    setAll(allClicks.concat('R'));
+    setRight(right + 1);
+  };
 
   return (
     <div>
@@ -89,8 +117,13 @@ const App = () => {
       <Total course={course} />
       <Display counter={counter} />
       <Button onClick={handleClick} text='PLUS' />
-      <Button onClick={setToZero} text='ZERO' />
+      <Button onClick={setToZero} text='  RESET' />
       <Button onClick={minusOne} text='MINUS' />
+      {left}
+      <Button onClick={handleLeft} text='left' />
+      <Button onClick={handleRight} text='right' />
+      {right}
+      <History allClicks={allClicks} />
     </div>
   );
 };
