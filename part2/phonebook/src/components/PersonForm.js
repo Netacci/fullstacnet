@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './Button';
 
 const PersonForm = ({
   onSubmit,
@@ -16,7 +17,7 @@ const PersonForm = ({
         number: <input onChange={onChangeNumber} value={valueNum} />
       </div>
       <div>
-        <button type='submit'>add</button>
+        <Button type='submit' text='add' />
       </div>
     </form>
   );
