@@ -33,15 +33,15 @@ const App = () => {
       .map((person) => (person.name === newName ? person.id : null))
       .filter((n) => n != null);
 
-    console.log(id);
+    // console.log(id);
 
-    console.log(revName);
+    // console.log(revName);
     const addNewNumber = {
       name: newName,
       number: newNumber,
     };
 
-    console.log(addNewNumber);
+    // console.log(addNewNumber);
 
     // eslint-disable-next-line no-unused-expressions
     revName.includes(newName)
@@ -85,10 +85,10 @@ const App = () => {
             }, 5000);
           })
           .catch((err) => {
-            console.log(`we don't know add person error`);
+            console.log(`we don't know add person error`, err.response.data);
           });
   };
-  console.log(persons);
+  // console.log(persons);
   // sets name state to value of name input
   const handleChangeName = (e) => {
     setName(e.target.value);
@@ -106,6 +106,7 @@ const App = () => {
   const filteredSearch = persons.filter((person) =>
     person.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
   );
+
   const handleDelete = (id, na) => {
     // eslint-disable-next-line no-unused-expressions
     window.confirm(`Delete ${na} from phonebook ?`)
