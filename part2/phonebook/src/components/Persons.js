@@ -1,12 +1,16 @@
 import React from 'react';
-import Button from './Button';
+import Btn from './Button';
+import { Text } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 
 const Persons = ({ person, onClick }) => {
   return (
-    <p>
-      {person.name} {person.number}
-      <Button type='submit' text='Delete' onClick={onClick} />
-    </p>
+    <Flex mt='3'>
+      <Text mr='5'>
+        {person.name} {person.number}
+      </Text>
+      <Btn color='teal' type='submit' text='Delete' onClick={onClick} />
+    </Flex>
   );
 };
 

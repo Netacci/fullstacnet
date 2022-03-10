@@ -1,10 +1,16 @@
 import React from 'react';
 
+import { Input } from '@chakra-ui/react';
+
 const Filter = ({ onChange }) => {
   return (
-    <div>
-      filter shown with: <input onChange={onChange} type='search' />
-    </div>
+    <Input
+      mt='5'
+      onChange={onChange}
+      type='search'
+      placeholder='Search Contact'
+      width='auto'
+    />
   );
 };
 

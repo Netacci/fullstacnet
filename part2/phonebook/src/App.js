@@ -4,6 +4,9 @@ import PersonForm from './components/PersonForm';
 import Persons from './components/Persons';
 import personService from './services/persons';
 import Notification from './components/Notification';
+import { Text } from '@chakra-ui/react';
+import { Container } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 const App = () => {
   const [persons, setPersons] = useState([]);
@@ -124,11 +127,17 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h2>Phonebook</h2>
+    <Container backgroundColor='#f8f8f8' boxShadow='2xl' rounded='md'>
+      <Text fontSize='3xl' mt='5' pt='6'>
+        {' '}
+        Phonebook
+      </Text>
       {notifyMessage !== null ? <Notification message={notifyMessage} /> : null}
       <Filter onChange={handleSearch} />
-      <h2>Add new</h2>
+      <Text fontSize='2xl' mt='5'>
+        Add New
+      </Text>
+
       <PersonForm
         onSubmit={handleSubmit}
         onChangeName={handleChangeName}
@@ -136,15 +145,19 @@ const App = () => {
         valueName={newName}
         valueNum={newNumber}
       />
-      <h2>Numbers</h2>
-      {filteredSearch.map((person) => (
-        <Persons
-          key={person.id}
-          person={person}
-          onClick={() => handleDelete(person.id, person.name)}
-        />
-      ))}
-    </div>
+      <Text fontSize='2xl' mt='5'>
+        Numbers
+      </Text>
+      <Box pb='9'>
+        {filteredSearch.map((person) => (
+          <Persons
+            key={person.id}
+            person={person}
+            onClick={() => handleDelete(person.id, person.name)}
+          />
+        ))}
+      </Box>
+    </Container>
   );
 };
 

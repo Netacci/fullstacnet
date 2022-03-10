@@ -1,13 +1,14 @@
 import React from 'react';
+import { Button } from '@chakra-ui/react';
 
-const Button = ({ type, text, onClick }) => {
+const Btn = ({ type, text, onClick, color }) => {
   return (
     <>
-      <button onClick={onClick} type={type}>
+      <Button colorScheme={color} onClick={onClick} type={type}>
         {text}
-      </button>
+      </Button>
     </>
   );
 };
 
-export default Button;
+export default Btn;
